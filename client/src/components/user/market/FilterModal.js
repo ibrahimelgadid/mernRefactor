@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal } from "flowbite-react";
 import { bindActionCreators } from "redux";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../../../redux/actions/categoriesActions";
+// import { getCategories } from "../../../redux/actions/categoriesActions";
 import { getBrands } from "../../../redux/actions/brandsActions";
 import LoadingCMP from "../../generalCMPs/LoadingCMP";
 import PriceRange from "./PriceRange";
@@ -15,8 +15,8 @@ const FilterModal = ({ showModal, setShowModal }) => {
   const [loadingstate, setloadingstate] = useState(false);
 
   // get categories for filter choosing
-  const getCategoriesHND = bindActionCreators(getCategories, useDispatch());
-  const { categories } = useSelector((state) => state.categoriesReducer);
+  // const getCategoriesHND = bindActionCreators(getCategories, useDispatch());
+  // const { categories } = useSelector((state) => state.categoriesReducer);
 
   // get brands for filter choosing
   const getBrandsHND = bindActionCreators(getBrands, useDispatch());
@@ -54,7 +54,7 @@ const FilterModal = ({ showModal, setShowModal }) => {
 
   // get categories
   useEffect(() => {
-    getCategoriesHND();
+    // getCategoriesHND();
     getBrandsHND();
     // eslint-disable-next-line
   }, []);
@@ -81,7 +81,7 @@ const FilterModal = ({ showModal, setShowModal }) => {
 
             <div className="sections grid grid-cols-3">
               <div className="category">
-                {categories.length > 0 &&
+                {/* {categories.length > 0 &&
                   categories.map((category) => (
                     <div key={category._id}>
                       <input
@@ -95,7 +95,7 @@ const FilterModal = ({ showModal, setShowModal }) => {
                         {category.name}
                       </label>
                     </div>
-                  ))}
+                  ))} */}
               </div>
               <div className="brand">
                 {brands.length > 0 &&

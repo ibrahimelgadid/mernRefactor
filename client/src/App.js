@@ -21,10 +21,10 @@ import { setCurrentUser } from "./redux/reduxUtilis/setCurrentUser";
 import store from "./redux/store";
 import { addTokenToHeader } from "./utilis/addTokenToHeader";
 import isEmpty from "./utilis/isEmpty";
-import Dashboard from "./components/admin/dashboard/Dashboard";
+// import Dashboard from "./components/admin/dashboard/Dashboard";
 import Brands from "./components/admin/brands/Brands";
 import SideBar from "./components/admin/layouts/sidebar/SideBar";
-import Categories from "./components/admin/categories/Categories";
+// import Categories from "./components/admin/categories/Categories";
 import Products from "./components/admin/products/Products";
 import Add from "./components/admin/products/Add";
 import Edit from "./components/admin/products/Edit";
@@ -131,14 +131,14 @@ const App = () => {
               }
             />
 
-            <Route
+            {/* <Route
               path="/admin"
               element={
                 <AdminPrivateRoute>
                   <Dashboard />
                 </AdminPrivateRoute>
               }
-            />
+            /> */}
             {/*  user routes  */}
             <Route
               path="/admin/users"
@@ -157,22 +157,22 @@ const App = () => {
               }
             />
             {/*  category routes  */}
-            <Route
+            {/* <Route
               path="/admin/categories"
               element={
                 <AdminPrivateRoute>
                   <Categories />
                 </AdminPrivateRoute>
               }
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="/admin/categories/add"
               element={
                 <AdminPrivateRoute>
                   <Categories />
                 </AdminPrivateRoute>
               }
-            />
+            /> */}
             {/*  product routes  */}
             <Route
               path="/admin/products"
