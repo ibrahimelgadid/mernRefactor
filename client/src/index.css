@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  color: white;
+}
+
+input {
+  caret-color: rgb(88 80 236 / var(--tw-bg-opacity)) !important;
+}
+
+textarea {
+  caret-color: rgb(88 80 236 / var(--tw-bg-opacity)) !important;
+}
+
+:root {
+  --tw-bg-opacity: 1;
+  --cancelConfirm: rgb(224 36 36 / var(--tw-bg-opacity));
+  --deleteConfirm: rgb(88 80 236 / var(--tw-bg-opacity));
+}
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
