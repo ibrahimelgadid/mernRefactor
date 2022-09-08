@@ -25,7 +25,7 @@ const cartRoutes = require("./routes/cartRoutes ");
 const stripeRoutes = require("./routes/stripeRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
-var passport = require("passport");
+var passport = require("passport"); // at header
 
 const app = express();
 const port = process.env.PORT || 5000;
