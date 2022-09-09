@@ -65,7 +65,7 @@ exports.addItem = asyncHandler(async (req, res) => {
 //                 GET CART ITEMS
 //=============================================================|
 exports.getItems = asyncHandler(async (req, res) => {
-  const cart = await cartModel.findOne({ _id: req.user.id });
+  const cart = await cartModel.findOne({ _id: req.user?.id });
   res.status(200).json(cart);
 });
 
