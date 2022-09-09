@@ -1,9 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const path = require("path");
 const cookieSession = require("cookie-session");
-var flash = require("connect-flash");
 
 require("colors");
 require("dotenv").config();
@@ -45,7 +43,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 //---------------------------------------------|
 //             ADD ROUTES IN MIDDELWARES
@@ -56,12 +53,12 @@ app.use("/posts", postRoutes);
 app.use("/comments", commentRoutes);
 app.use("/likes", likeRoutes);
 app.use("/brands", brandRoutes);
-app.use("/categories", categoryRoutes);
 app.use("/products", productRoutes);
+app.use("/categories", categoryRoutes);
 app.use("/cart", cartRoutes);
 app.use("/stripe", stripeRoutes);
-app.use("/orders", orderRoutes);
 app.use("/notifications", notificationRoutes);
+app.use("/orders", orderRoutes);
 
 // for production
 if (process.env.NODE_ENV === "production") {

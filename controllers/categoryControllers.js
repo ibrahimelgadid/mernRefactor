@@ -7,7 +7,7 @@ const categoryValidation = require("../validation/categoryValidation");
 //=============================================================|
 //                 ADD CATEGORY
 //=============================================================|
-const addCategory = asyncHandler(async (req, res) => {
+exports.addCategory = asyncHandler(async (req, res) => {
   const { errors, isValid } = categoryValidation(req.body);
   // Check Validation
   if (!isValid) {
@@ -40,7 +40,7 @@ const addCategory = asyncHandler(async (req, res) => {
 //=============================================================|
 //                 EDIT CATEGORY
 //=============================================================|
-const editCategory = asyncHandler(async (req, res) => {
+exports.editCategory = asyncHandler(async (req, res) => {
   const { errors, isValid } = categoryValidation(req.body);
   // Check Validation
   if (!isValid) {
@@ -81,7 +81,7 @@ const editCategory = asyncHandler(async (req, res) => {
 //=============================================================|
 //                 GET CATEGORIES
 //=============================================================|
-const getCategories = asyncHandler(async (req, res) => {
+exports.getCategories = asyncHandler(async (req, res) => {
   const categories = await categoryModel
     .find()
     .populate("user", ["username", "avatar"]);
@@ -92,7 +92,7 @@ const getCategories = asyncHandler(async (req, res) => {
 //=============================================================|
 //                 DELETE CATEGORY
 //=============================================================|
-const deleteCategory = asyncHandler(async (req, res) => {
+exports.deleteCategory = asyncHandler(async (req, res) => {
   const category = await categoryModel.findOne({ _id: req.params.categoryId });
 
   if (!category) {
@@ -105,11 +105,3 @@ const deleteCategory = asyncHandler(async (req, res) => {
   await categoryModel.deleteOne({ _id: req.params.categoryId });
   res.status(200).json({ msg: "deleted successfully" });
 });
-
-///////// export modules ////
-module.exports = {
-  addCategory,
-  getCategories,
-  editCategory,
-  deleteCategory,
-};
