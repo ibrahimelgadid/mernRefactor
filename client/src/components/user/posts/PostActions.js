@@ -25,7 +25,7 @@ const PostActions = ({ post }) => {
 
   return (
     <div
-      onClick={(e) => e.stopPropagation}
+      onClick={(e) => e.stopPropagation()}
       className="postActions shadow-lg border  absolute top-4 right-10 py-2 pl-3 pr-5 flex flex-col items-start"
     >
       <PostEditInput

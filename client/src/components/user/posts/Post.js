@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   faCalendarDays,
   faCommentDots,
@@ -36,14 +36,22 @@ const Post = ({ post }) => {
       unlike.user?._id === user._id || unlike.deleted?._id === user._id
   );
 
-  const submitLike = async () => {
-    await addLikeHND(post._id);
+  const submitLike = () => {
+    addLikeHND(post._id);
   };
 
   // unlike post
-  const submitUnLike = async () => {
-    await addUnLikeHND(post._id);
+  const submitUnLike = () => {
+    addUnLikeHND(post._id);
   };
+
+  // hide dropdown when no focus
+  useEffect(() => {
+    document.body.addEventListener("click", () => {
+      setPostActions(false);
+      console.log("object");
+    });
+  }, [postActions]);
 
   return (
     <div className="container mx-auto my-10 bg-white relative">
@@ -65,7 +73,10 @@ const Post = ({ post }) => {
           {isOwner(post.user?._id) || isSuperAdmin() ? (
             <div
               className="bullets cursor-pointer"
-              onClick={() => setPostActions(!postActions)}
+              onClick={(e) => {
+                setPostActions(!postActions);
+                e.stopPropagation();
+              }}
             >
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </div>

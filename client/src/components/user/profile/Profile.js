@@ -26,7 +26,10 @@ const Profile = () => {
   const [disable, setdisable] = useState(false);
 
   const { user } = useSelector((state) => state.authReducer);
+
   const imgRef = useRef();
+  const profileActoins = useRef();
+
   const changeImgForUI = bindActionCreators(changeImg, useDispatch());
   const { errors } = useSelector((state) => state.errorsReducer);
 
@@ -60,12 +63,23 @@ const Profile = () => {
     }
   }, [errors, errorsstate, user.avatar]);
 
+  // hide dropdown when not focus
+  useEffect(() => {
+    document.body.addEventListener("click", () => {
+      setDropShow(false);
+    });
+  }, [dropShow]);
+
   return (
     <div className="profile container mx-auto py-10 relative">
       <div className=" bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div className="flex justify-end px-4 pt-4">
           <button
-            onClick={() => setDropShow(!dropShow)}
+            onClick={function (e) {
+              setDropShow(!dropShow);
+              e.stopPropagation();
+            }}
+            ref={profileActoins}
             className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
           >
             <span className="sr-only">Open dropdown</span>
