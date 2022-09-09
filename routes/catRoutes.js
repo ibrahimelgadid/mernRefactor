@@ -1,6 +1,6 @@
 ///////   All required modules   /////////
 const protect = require("../config/authMiddleware");
-const categoryCTRLs = require("../controllers/CategoryControllers");
+const categoryCTRLs = require("../controllers/catControllers");
 
 const router = require("express").Router();
 
