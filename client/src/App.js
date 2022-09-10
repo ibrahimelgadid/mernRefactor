@@ -37,6 +37,7 @@ import Orders from "./components/user/orders/Orders";
 import OrdersAdmin from "./components/admin/orders/Orders";
 import ShowOrder from "./components/admin/orders/Show";
 import Verify from "./components/user/auth/passReset/Verify";
+import { useEffect } from "react";
 
 if (localStorage.getItem("token")) {
   const token = localStorage.getItem("token");
@@ -55,6 +56,14 @@ const App = () => {
   const admin =
     (!isEmpty(user) && user.role === "admin") ||
     (!isEmpty(user) && user.role === "superAdmin");
+
+  useEffect(() => {
+    if (localStorage.getItem("i18nextLng")) {
+      localStorage.getItem("i18nextLng") === "ar"
+        ? (document.body.dir = "rtl")
+        : (document.body.dir = "ltr");
+    }
+  }, []);
 
   return (
     <div>

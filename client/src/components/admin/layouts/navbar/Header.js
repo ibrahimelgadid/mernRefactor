@@ -42,7 +42,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 flex items-center justify-between">
         <div className="relative flex items-center justify-between h-16">
           <span
-            className="mr-5 cursor-pointer hover:text-sky-600 duration-300"
+            className="me-5 cursor-pointer hover:text-sky-600 duration-300"
             onClick={(e) => {
               document.getElementById("sidebar").classList.contains("hidden")
                 ? document.getElementById("sidebar").classList.remove("hidden")
@@ -52,7 +52,7 @@ const Header = () => {
             <FontAwesomeIcon icon={faBars} size="xl" />
           </span>
 
-          <div className=" sm:ml-6">
+          <div className=" sm:ms-6">
             <div className="flex space-x-4">
               <Link
                 to="/admin"
@@ -72,15 +72,15 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className=" inset-y-0 right-0 flex items-center  justify-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div className=" inset-y-0 end-0 flex items-center  justify-center sm:static sm:inset-auto sm:ms-6 sm:pe-0">
           <button
             type="button"
             onClick={() => setShowNot(!showNot)}
-            className="relative p-1 mr-4 rounded-full  hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-sky-600 focus:ring-white"
+            className="relative p-1 me-4 rounded-full  hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-sky-600 focus:ring-white"
           >
             <FontAwesomeIcon icon={faBell} size="xl" className="text-sky-600" />
             <div
-              className={`${notiClass} transition-all duration-100 inline-flex absolute -top-2 -right-2 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-gray-600 rounded-full`}
+              className={`${notiClass} transition-all duration-100 inline-flex absolute -top-2 -end-2 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-gray-600 rounded-full`}
             >
               {notifications.length || 0}
             </div>

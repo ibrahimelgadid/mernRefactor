@@ -86,7 +86,7 @@ const Profile = () => {
             <FontAwesomeIcon icon={faEllipsisH} size="xl" />
           </button>
           {dropShow ? (
-            <div className="z-10 w-44 absolute top-20 right-14 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-md block">
+            <div className="z-10 w-44 absolute top-20 end-14 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-md block">
               <ul className="py-1" aria-labelledby="dropdownButton">
                 <li>
                   <Link
@@ -132,7 +132,7 @@ const Profile = () => {
               src={user.avatar}
               alt=""
             />
-            <span className="changeImg text-gray-600 absolute  bottom-1 right-1/2 translate-x-1/2">
+            <span className="changeImg text-gray-600 absolute  bottom-1 end-1/2 translate-x-1/2">
               <form onSubmit={handleAvatar}>
                 <label htmlFor="avatar" className="cursor-pointer">
                   <FontAwesomeIcon
@@ -198,7 +198,7 @@ const Profile = () => {
                 >
                   <FontAwesomeIcon
                     icon={faYoutube}
-                    className="cursor-pointer mr-2 text-red-600 border-red-600  border  py-2 px-4  rounded-sm"
+                    className="cursor-pointer me-2 text-red-600 border-red-600  border  py-2 px-4  rounded-sm"
                   />
                 </a>
               ) : null}
@@ -211,7 +211,7 @@ const Profile = () => {
                 >
                   <FontAwesomeIcon
                     icon={faFacebook}
-                    className="cursor-pointer mr-2 text-blue-600 border-blue-600  border  py-2 px-4  rounded-sm"
+                    className="cursor-pointer me-2 text-blue-600 border-blue-600  border  py-2 px-4  rounded-sm"
                   />
                 </a>
               ) : null}

@@ -6,8 +6,10 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Product = ({ product }) => {
+  const { t, i18n } = useTranslation();
   const addItemsHND = bindActionCreators(addItem, useDispatch());
 
   const submitAddItem = async () => {
@@ -46,7 +48,7 @@ const Product = ({ product }) => {
           <FontAwesomeIcon icon={faStar} className="text-yellow-300" />
           <FontAwesomeIcon icon={faStar} className="text-yellow-300" />
 
-          <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-indigo-200 dark:text-indigo-800 ml-3">
+          <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-indigo-200 dark:text-indigo-800 ms-3">
             5.0
           </span>
         </div>
@@ -59,7 +61,7 @@ const Product = ({ product }) => {
             onClick={submitAddItem}
             className="text-indigo-700 dele hover:text-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-bold rounded-lg text-md "
           >
-            <FontAwesomeIcon icon={faCartPlus} /> Add to cart
+            <FontAwesomeIcon icon={faCartPlus} /> {t("Market.ADD_TO_CART")}
           </button>
         </div>
       </div>

@@ -26,7 +26,7 @@ const PostActions = ({ post }) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className="postActions shadow-lg border  absolute top-4 right-10 py-2 pl-3 pr-5 flex flex-col items-start"
+      className="postActions shadow-lg border  absolute top-4 end-10 py-2 ps-3 pe-5 flex flex-col items-start"
     >
       <PostEditInput
         showModal={showModal}

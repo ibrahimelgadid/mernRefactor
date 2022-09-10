@@ -14,20 +14,22 @@ import {
 import classnames from "classnames";
 import { logOut } from "../../../../redux/actions/authActions";
 import { getItems } from "../../../../redux/actions/cartActions";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const [userDropDown, setuserDropDown] = useState(false);
   const [itemDropDown, setitemDropDown] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const signOut = bindActionCreators(logOut, useDispatch());
-  const geItemsHND = bindActionCreators(getItems, useDispatch());
+  const getItemsHND = bindActionCreators(getItems, useDispatch());
   const { isAuth, user } = useSelector((state) => state.authReducer);
 
   const { cart } = useSelector((state) => state.cartReducer);
 
   useEffect(() => {
     if (isAuth) {
-      geItemsHND();
+      getItemsHND();
     }
     // eslint-disable-next-line
   }, []);
@@ -41,10 +43,10 @@ const Header = () => {
 
   return (
     <nav className="bg-gray-900">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="mx-auto container ">
         <div className="relative flex items-center justify-between h-16">
           {isAuth ? (
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <div className="absolute inset-y-0 start-0 flex items-center sm:hidden">
               <button
                 onClick={() => setitemDropDown(!itemDropDown)}
                 className=" p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -59,7 +61,7 @@ const Header = () => {
               { " justify-start": !isAuth, " justify-center": isAuth }
             )}
           >
-            <div className="flex-shrink-0 flex items-center">
+            <div className="flex items-center">
               <Link to={"/"}>
                 <img
                   className="block h-8 w-auto"
@@ -68,16 +70,41 @@ const Header = () => {
                 />
               </Link>
             </div>
+            <div className="text-gray-100 font-medium border border-indigo-600 rounded-full flex justify-center items-center px-2 ">
+              {i18n.language === "ar" && (
+                <button
+                  onClick={() => {
+                    i18n.changeLanguage("en");
+                    document.body.dir = "ltr";
+                  }}
+                  className="hover:text-indigo-600 transition-colors duration-300"
+                >
+                  EN
+                </button>
+              )}
+
+              {i18n.language === "en" && (
+                <button
+                  onClick={() => {
+                    i18n.changeLanguage("ar");
+                    document.body.dir = "rtl";
+                  }}
+                  className="hover:text-indigo-600 transition-colors duration-300"
+                >
+                  AR
+                </button>
+              )}
+            </div>
             {isAuth ? (
-              <div className="hidden sm:block sm:ml-6">
+              <div className="hidden sm:block ms-6 sm">
                 <div className="flex space-x-4">
                   <NavLink
                     to="/cart"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex relative items-center"
                     aria-current="page"
                   >
-                    Cart
-                    <div className="inline-flex absolute -top-2 -right-2 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
+                    {t("Header.CART")}
+                    <div className="inline-flex absolute -top-2 start-9 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
                       {cart?.totalQty || 0}
                     </div>
                   </NavLink>
@@ -86,33 +113,33 @@ const Header = () => {
                     to="/community"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Community
+                    {t("Header.COMMUNITY")}
                   </NavLink>
 
                   <NavLink
                     to="/orders"
                     className="text-gray-300 cursor-pointer hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Orders
+                    {t("Header.ORDERS")}
                   </NavLink>
                 </div>
               </div>
             ) : null}
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute inset-y-0 start-0 flex items-center ps-2 sm:static sm:inset-auto ms-6 sm:pe-0">
             {!isAuth ? (
               <div className="auth text-white flex">
                 <Link
                   to="/register"
                   className="cursor-pointer text-gray-300 duration-500 bg-indigo-700 hover:bg-indigo-800 hover:text-white block sm:px-3 px-2  py-1 sm:text-base text-sm rounded-full sm:font-medium "
                 >
-                  Register
+                  {t("Header.REGISTER")}
                 </Link>
                 <Link
                   to="/login"
-                  className="cursor-pointer  text-gray-300 duration-500 bg-indigo-700 hover:bg-indigo-800 hover:text-white block sm:px-3 px-2  ml-1 rtl:mr-1 py-1 sm:text-base text-sm  rounded-full  sm:font-medium "
+                  className="cursor-pointer  text-gray-300 duration-500 bg-indigo-700 hover:bg-indigo-800 hover:text-white block sm:px-3 px-2  me-1 py-1 sm:text-base text-sm  rounded-full  sm:font-medium "
                 >
-                  login
+                  {t("Header.LOGIN")}
                 </Link>
               </div>
             ) : (
@@ -125,7 +152,7 @@ const Header = () => {
                   <FontAwesomeIcon icon={faBell} size="xl" />
                 </button>
                 <div
-                  className="ml-3 relative"
+                  className="ms-3 relative"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div>
@@ -147,7 +174,7 @@ const Header = () => {
                   </div>
                   {userDropDown ? (
                     <div
-                      className="z-50 origin-top-right absolute right-0 mt-4 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className="z-50  absolute end-0  mt-4 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu-button"
@@ -165,7 +192,8 @@ const Header = () => {
                         tabIndex="-1"
                         id="user-menu-item-0"
                       >
-                        <FontAwesomeIcon icon={faUserGear} /> Profile
+                        <FontAwesomeIcon icon={faUserGear} />{" "}
+                        {t("Header.PROFILE")}
                       </Link>
                       <a
                         href="/"
@@ -174,7 +202,8 @@ const Header = () => {
                         tabIndex="-1"
                         id="user-menu-item-1"
                       >
-                        <FontAwesomeIcon icon={faGears} /> Settings
+                        <FontAwesomeIcon icon={faGears} />{" "}
+                        {t("Header.SETTINGS")}
                       </a>
                       {user.role === "admin" || user.role === "superAdmin" ? (
                         <a
@@ -185,7 +214,8 @@ const Header = () => {
                           tabIndex="-1"
                           id="user-menu-item-1"
                         >
-                          <FontAwesomeIcon icon={faUserNinja} /> Admin Area
+                          <FontAwesomeIcon icon={faUserNinja} />{" "}
+                          {t("Header.ADMIN_AREA")}
                         </a>
                       ) : null}
 
@@ -196,7 +226,8 @@ const Header = () => {
                         tabIndex="-1"
                         id="user-menu-item-2"
                       >
-                        <FontAwesomeIcon icon={faSignOutAlt} /> Sign out
+                        <FontAwesomeIcon icon={faSignOutAlt} />{" "}
+                        {t("Header.LOGOUT")}
                       </div>
                     </div>
                   ) : null}
@@ -216,7 +247,7 @@ const Header = () => {
               aria-current="page"
             >
               Cart
-              <div className="inline-flex absolute top-0 left-9 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
+              <div className="inline-flex absolute top-0 start-9 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
                 {cart?.totalQty || 0}
               </div>
             </Link>

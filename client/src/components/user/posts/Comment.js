@@ -15,9 +15,9 @@ const Comment = ({ post, comment }) => {
       <img
         src={comment.user?.avatar || "../../../../imgs/imm.png"}
         alt=""
-        className="mr-2 h-6 w-6 rounded-full"
+        className="me-2 h-6 w-6 rounded-full"
       />
-      <p className="commentBody mr-3 ">{comment.comment}</p>
+      <p className="commentBody me-3 ">{comment.comment}</p>
       {isOwner(comment.user?._id) ? (
         <span
           onClick={() =>

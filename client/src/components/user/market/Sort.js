@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
-const Sort = () => {
+const Sort = ({ t }) => {
   const [sort, setSort] = useState({
     selectedItem: "name",
     number: 1,
@@ -35,25 +35,25 @@ const Sort = () => {
       <li
         id="name"
         onClick={submitSort}
-        className="font-medium text-gray-600 py-1 pl-3 hover:bg-gray-100 transition-colors duration-200  cursor-pointer"
+        className="font-medium text-gray-600 py-1 ps-3 hover:bg-gray-100 transition-colors duration-200  cursor-pointer"
       >
-        <FontAwesomeIcon icon={faArrowUp} /> Name
+        <FontAwesomeIcon icon={faArrowUp} /> {t("Market.SORT_BY_NAME")}
       </li>
 
       <li
         id="price"
         onClick={submitSort}
-        className="font-medium text-gray-600 py-1 pl-3 hover:bg-gray-100 transition-colors duration-200  cursor-pointer"
+        className="font-medium text-gray-600 py-1 ps-3 hover:bg-gray-100 transition-colors duration-200  cursor-pointer"
       >
-        <FontAwesomeIcon icon={faArrowUp} /> Price
+        <FontAwesomeIcon icon={faArrowUp} /> {t("Market.SORT_BY_PRICE")}
       </li>
 
       <li
         id="createdAt"
         onClick={submitSort}
-        className="font-medium text-gray-600 py-1 pl-3 hover:bg-gray-100 transition-colors duration-200  cursor-pointer"
+        className="font-medium text-gray-600 py-1 ps-3 hover:bg-gray-100 transition-colors duration-200  cursor-pointer"
       >
-        <FontAwesomeIcon icon={faArrowUp} /> Added
+        <FontAwesomeIcon icon={faArrowUp} /> {t("Market.SORT_BY_ADDED")}
       </li>
     </ul>
   );

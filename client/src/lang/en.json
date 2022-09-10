@@ -1,0 +1,60 @@
+{
+  "Registration": {
+    "REGISTER": "ٌRegister",
+    "LOGIN": "Login",
+    "TITLE": "Create new account",
+    "HAVE_ACOUNT": "Have an account? Sign in",
+    "USERNAME": "Username",
+    "EMAIL": "Email address",
+    "PASSWORD": "Password",
+    "PASSWORD2": "Re-enter Password",
+    "BUTTON": "Sign in",
+    "HAVE_ACOUNT2": "Have an account?",
+    "CONTINUE": "Or continue with"
+  },
+
+  "Login": {
+    "REGISTER": "ٌRegister",
+    "LOGIN": "Login",
+    "TITLE": "Login to your account",
+    "HAVE_ACOUNT": "Don't have an account? Sign up",
+    "EMAIL": "Email address",
+    "PASSWORD": "Password",
+    "BUTTON": "Sign up",
+    "HAVE_ACOUNT2": "Don't have an account?",
+    "CONTINUE": "Or continue with",
+    "FORGOT": "Forget password?"
+  },
+  "Header": {
+    "REGISTER": "Sign up",
+    "LOGIN": "Sign in",
+    "ORDERS": "Orders",
+    "COMMUNITY": "Community",
+    "CART": "Cart",
+    "PROFILE": "Profile",
+    "SETTINGS": "Settings",
+    "ADMIN_AREA": "Admin Area",
+    "LOGOUT": "Sign Out"
+  },
+
+  "Footer": {
+    "DESIGN_BY": "Design & developed by",
+    "COPY_RIGHTS": "copyrights reserved",
+    "NAME": "Ibrahim Elgadid"
+  },
+
+  "Market": {
+    "ADD_TO_CART": "Add to cart",
+    "SEARCH_ITEMS": "Search for items",
+    "SORT_BY_NAME": "Name",
+    "SORT_BY_PRICE": "Price",
+    "SORT_BY_ADDED": "Added",
+    "FILTER": "Fiter what you need",
+    "FILTER_BUTTON": "Fiter",
+    "REVIEWS": "reviews",
+    "GALLARY": "Gallary",
+    "CATEGORY": "Category",
+    "BRAND": "Brand",
+    "PRICE": "Price"
+  }
+}

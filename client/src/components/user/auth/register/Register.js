@@ -18,6 +18,8 @@ import store from "../../../../redux/store";
 import { clearErrors } from "../../../../redux/reduxUtilis/clearErrors";
 import LoadingCMP from "../../../generalCMPs/LoadingCMP";
 import ErrorCMP from "../../../generalCMPs/ErrorCMP";
+import { useTranslation } from "react-i18next";
+
 // import io from "socket.io-client";
 // import Cookie from "universal-cookie";
 // let cookie = new Cookie();
@@ -31,6 +33,7 @@ const Register = () => {
   const [loadingstate, setloadingstate] = useState(false);
   // const [socket, setsocket] = useState("");
   const [emailErr, setemailErr] = useState("");
+  const { t, i18n } = useTranslation();
 
   const registerForUi = bindActionCreators(register, useDispatch());
   const { errors } = useSelector((state) => state.errorsReducer);
@@ -133,10 +136,10 @@ const Register = () => {
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-lg sm:text-3xl font-extrabold text-gray-900">
-              Create new account
+              {t("Registration.TITLE")}
             </h2>
             <p className="text-center sm:my-4 text-indigo-500 sm:font-medium ">
-              <Link to={"/login"}>Have an account? Sign in</Link>
+              <Link to={"/login"}>{t("Registration.HAVE_ACOUNT")}</Link>
             </p>
             <ErrorCMP errorData={emailErr} />
           </div>
@@ -152,7 +155,7 @@ const Register = () => {
                   onChange={(e) => setusername(e.target.value)}
                   type="text"
                   className=" relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="username"
+                  placeholder={t("Registration.USERNAME")}
                 />
                 <ErrorCMP errorData={errors.username} />
               </div>
@@ -167,7 +170,7 @@ const Register = () => {
                   value={email}
                   onChange={(e) => setemail(e.target.value)}
                   className="  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
+                  placeholder={t("Registration.EMAIL")}
                 />
                 <ErrorCMP errorData={errors.email} />
               </div>
@@ -181,7 +184,7 @@ const Register = () => {
                   value={password}
                   onChange={(e) => setpassword(e.target.value)}
                   className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
+                  placeholder={t("Registration.PASSWORD")}
                 />
                 <ErrorCMP errorData={errors.password} />
               </div>
@@ -195,7 +198,7 @@ const Register = () => {
                   value={password2}
                   onChange={(e) => setpassword2(e.target.value)}
                   className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="re-enter password"
+                  placeholder={t("Registration.PASSWORD2")}
                 />
                 <ErrorCMP errorData={errors.password2} />
               </div>
@@ -207,10 +210,14 @@ const Register = () => {
                 disabled={loadingstate}
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <span className="text-indigo-500 absolute left-0 inset-y-0 flex items-center pl-3">
+                <span className="text-indigo-500 absolute start-0 inset-y-0 flex items-center ps-3">
                   <FontAwesomeIcon icon={faLock} />
                 </span>
-                {loadingstate ? <LoadingCMP siz={"h-6 w-6"} /> : "Sign in"}
+                {loadingstate ? (
+                  <LoadingCMP siz={"h-6 w-6"} />
+                ) : (
+                  t("Registration.REGISTER")
+                )}
               </button>
             </div>
           </form>
@@ -218,7 +225,7 @@ const Register = () => {
             <span className="w-1/4 h-px inline-block bg-gray-500"></span>
             <span className="w-2/4 sm:text-base text-sm">
               {" "}
-              Or continue with{" "}
+              {t("Registration.CONTINUE")}{" "}
             </span>
             <span className="w-1/4 h-px inline-block bg-gray-500"></span>
           </div>
@@ -243,13 +250,13 @@ const Register = () => {
           </div>
           <div className="flex items-center justify-evenly sm:py-6 text-sm sm:text-base">
             <div className="flex items-center">
-              Have an account?
+              {t("Registration.HAVE_ACOUNT2")}
               <Link
                 className="font-medium text-indigo-600 hover:text-indigo-500"
                 to={"/login"}
               >
                 {" "}
-                Sign in
+                {t("Registration.BUTTON")}
               </Link>
             </div>
           </div>

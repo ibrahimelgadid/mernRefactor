@@ -13,10 +13,10 @@ const Notifications = ({ notifications, loading }) => {
     useDispatch()
   );
   return (
-    <div className="shadow-xl absolute sm:top-16 smL:right-20 top-16 right-0 z-50  pt-5 max-w-xs bg-gray-50">
+    <div className="shadow-xl absolute sm:top-16 smL:end-20 top-16 end-0 z-50  pt-5 max-w-xs bg-gray-50">
       <span
         onClick={() => clearNotificationsHND()}
-        className="float-right font-medium text-red-400 mr-2 cursor-pointer hover:text-red-900 transition-all duration-300"
+        className="float-right font-medium text-red-400 me-2 cursor-pointer hover:text-red-900 transition-all duration-300"
       >
         Clear
       </span>

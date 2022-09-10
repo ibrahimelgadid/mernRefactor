@@ -8,7 +8,7 @@ import LoadingCMP from "../../generalCMPs/LoadingCMP";
 import PriceRange from "./PriceRange";
 import { getProductsByFilter } from "../../../redux/actions/productsActions";
 
-const FilterModal = ({ showModal, setShowModal }) => {
+const FilterModal = ({ showModal, setShowModal, t }) => {
   const [price, setPrice] = useState([0, 400]);
   const [recordList, setRecordList] = useState([]);
 
@@ -75,12 +75,15 @@ const FilterModal = ({ showModal, setShowModal }) => {
         >
           <div className=" space-y-6 px-0 sm:px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
             <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-              Fiter what you need.
+              {t("Market.FILTER")}
               <hr className="my-3 h-0.5 bg-gray-600" />
             </h3>
 
             <div className="sections grid grid-cols-3">
               <div className="category">
+                <h3 className="text-3x font-bold pb-4">
+                  {t("Market.CATEGORY")}
+                </h3>
                 {categories.length > 0 &&
                   categories.map((category) => (
                     <div key={category._id}>
@@ -98,6 +101,7 @@ const FilterModal = ({ showModal, setShowModal }) => {
                   ))}
               </div>
               <div className="brand">
+                <h3 className="text-3x font-bold pb-4">{t("Market.BRAND")}</h3>
                 {brands.length > 0 &&
                   brands.map((brand) => (
                     <div key={brand._id}>
@@ -115,6 +119,7 @@ const FilterModal = ({ showModal, setShowModal }) => {
                   ))}
               </div>
               <div className="priceRange">
+                <h3 className="text-3x font-bold pb-4">{t("Market.PRICE")}</h3>
                 <PriceRange price={price} setPrice={setPrice} />
                 <strong className="float-left mt-2">${price[0]}</strong>
                 <strong className="float-right mt-2">${price[1]}</strong>
@@ -126,7 +131,11 @@ const FilterModal = ({ showModal, setShowModal }) => {
                 className="bg-indigo-700 py-2 px-3 text-white rounded-md"
                 onClick={submitFilterData}
               >
-                {loadingstate ? <LoadingCMP siz={"h-6 w-6"} /> : "Send"}
+                {loadingstate ? (
+                  <LoadingCMP siz={"h-6 w-6"} />
+                ) : (
+                  t("Market.FILTER_BUTTON")
+                )}
               </button>
             </div>
           </div>

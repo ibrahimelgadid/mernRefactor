@@ -45,7 +45,7 @@ const SideBar = () => {
               <span>
                 <FontAwesomeIcon
                   icon={faUser}
-                  className=" mr-3 text-gray-400"
+                  className=" me-3 text-gray-400"
                   size="lg"
                 />{" "}
                 Users
@@ -56,7 +56,7 @@ const SideBar = () => {
               <ul>
                 <li className="hover:bg-sky-900 ">
                   <Link
-                    className="block w-full py-3 pl-10 cursor-pointer font-medium"
+                    className="block w-full py-3 ps-10 cursor-pointer font-medium"
                     to={"/admin/users"}
                   >
                     All Users
@@ -74,7 +74,7 @@ const SideBar = () => {
               <span>
                 <FontAwesomeIcon
                   icon={faBuildingFlag}
-                  className=" mr-2 text-gray-400"
+                  className=" me-2 text-gray-400"
                   size="lg"
                 />{" "}
                 Brands
@@ -85,7 +85,7 @@ const SideBar = () => {
               <ul>
                 <li className="hover:bg-sky-900 ">
                   <Link
-                    className="block w-full py-3 pl-10 cursor-pointer font-medium"
+                    className="block w-full py-3 ps-10 cursor-pointer font-medium"
                     to={"/admin/brands"}
                   >
                     All Brands
@@ -103,7 +103,7 @@ const SideBar = () => {
               <span>
                 <FontAwesomeIcon
                   icon={faMarsStrokeRight}
-                  className=" mr-2 text-gray-400"
+                  className=" me-2 text-gray-400"
                   size="lg"
                 />{" "}
                 Categories
@@ -114,7 +114,7 @@ const SideBar = () => {
               <ul>
                 <li className="hover:bg-sky-900 ">
                   <Link
-                    className="block w-full py-3 pl-10 cursor-pointer font-medium"
+                    className="block w-full py-3 ps-10 cursor-pointer font-medium"
                     to={"/admin/categories"}
                   >
                     All Categories
@@ -132,7 +132,7 @@ const SideBar = () => {
               <span>
                 <FontAwesomeIcon
                   icon={faSackDollar}
-                  className=" mr-3 text-gray-400"
+                  className=" me-3 text-gray-400"
                   size="lg"
                 />{" "}
                 Products
@@ -143,7 +143,7 @@ const SideBar = () => {
               <ul>
                 <li className="hover:bg-sky-900 ">
                   <Link
-                    className="block w-full py-3 pl-10 cursor-pointer font-medium"
+                    className="block w-full py-3 ps-10 cursor-pointer font-medium"
                     to={"/admin/products"}
                   >
                     All Products
@@ -151,7 +151,7 @@ const SideBar = () => {
                 </li>
                 <li className="hover:bg-sky-900">
                   <Link
-                    className=" block w-full py-3 pl-10 cursor-pointer font-medium"
+                    className=" block w-full py-3 ps-10 cursor-pointer font-medium"
                     to={"/admin/products/add"}
                   >
                     Add Product

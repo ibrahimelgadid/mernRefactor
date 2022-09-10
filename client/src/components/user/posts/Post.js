@@ -64,7 +64,7 @@ const Post = ({ post }) => {
             <img
               src={post.user?.avatar || "../../../../imgs/imm.png"}
               alt=""
-              className="w-auto rounded-full mr-3"
+              className="w-auto rounded-full me-3"
             />
             <span>
               {post.user?.username || <del>{post.deleted.username}</del>}
@@ -86,19 +86,19 @@ const Post = ({ post }) => {
         <div className="text-start py-5 middle">{post.text}</div>
         <hr />
         <div className="bottom flex text-gray-600  mt-3">
-          <div className="date mr-7">
-            <FontAwesomeIcon icon={faCalendarDays} size="lg" className="mr-1" />
+          <div className="date me-7">
+            <FontAwesomeIcon icon={faCalendarDays} size="lg" className="me-1" />
 
             <Moment fromNow>{post.createdAt}</Moment>
           </div>
-          <div className="comments mr-7">
-            <FontAwesomeIcon icon={faCommentDots} size="lg" className="mr-1" />
+          <div className="comments me-7">
+            <FontAwesomeIcon icon={faCommentDots} size="lg" className="me-1" />
             <span className="font-medium">{post.comments.length}</span>
           </div>
           <div className="likes">
             <span
               onClick={submitLike}
-              className={classnames("like mr-2 cursor-pointer ", {
+              className={classnames("like me-2 cursor-pointer ", {
                 "text-indigo-500": isLikedPost,
               })}
             >
@@ -111,7 +111,7 @@ const Post = ({ post }) => {
                 "text-indigo-500": isUnLikedPost,
               })}
             >
-              <FontAwesomeIcon icon={faThumbsDown} size="lg" className="mr-1" />
+              <FontAwesomeIcon icon={faThumbsDown} size="lg" className="me-1" />
               <span className="font-medium">{post.unlikes.length}</span>
             </span>
           </div>

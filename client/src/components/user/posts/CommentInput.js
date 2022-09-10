@@ -23,7 +23,7 @@ const CommentInput = ({ post }) => {
       <img
         src={user.avatar}
         alt=""
-        className="mr-1 w-10 h-10 rounded-full"
+        className="me-1 w-10 h-10 rounded-full"
       ></img>
       <form className="w-full" onSubmit={submitComment}>
         <input

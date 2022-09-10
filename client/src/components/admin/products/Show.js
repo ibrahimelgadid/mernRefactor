@@ -62,7 +62,7 @@ const Show = () => {
               />
             </div>
             <div className="sm:col-span-8 lg:col-span-7">
-              <h2 className="text-2xl font-extrabold text-gray-900 sm:pr-12">
+              <h2 className="text-2xl font-extrabold text-gray-900 sm:pe-12">
                 {product.name}
               </h2>
 
@@ -110,7 +110,7 @@ const Show = () => {
                     <p className="sr-only">3.9 out of 5 stars</p>
                     <Link
                       to="#"
-                      className="ml-3 text-sm font-medium text-sky-600 hover:text-sky-500"
+                      className="ms-3 text-sm font-medium text-sky-600 hover:text-sky-500"
                     >
                       117 reviews
                     </Link>

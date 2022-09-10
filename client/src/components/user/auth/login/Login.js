@@ -18,6 +18,8 @@ import store from "../../../../redux/store";
 import { clearErrors } from "../../../../redux/reduxUtilis/clearErrors";
 import LoadingCMP from "../../../generalCMPs/LoadingCMP";
 import ErrorCMP from "../../../generalCMPs/ErrorCMP";
+import { useTranslation } from "react-i18next";
+
 // import Cookie from "universal-cookie";
 // let cookie = new Cookie();
 
@@ -27,6 +29,7 @@ const Login = () => {
   const [errorsstate, seterrorsstate] = useState("");
   const [loadingstate, setloadingstate] = useState(false);
   const [emailErr, setemailErr] = useState("");
+  const { t, i18n } = useTranslation();
 
   const loginForUi = bindActionCreators(login, useDispatch());
   const { errors } = useSelector((state) => state.errorsReducer);
@@ -122,10 +125,10 @@ const Login = () => {
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-lg sm:text-3xl font-extrabold text-gray-900">
-              Login to your account
+              {t("Login.TITLE")}
             </h2>
             <p className="text-center sm:my-4 text-indigo-500 sm:font-medium ">
-              <Link to={"/register"}>Don't have an account? Sign up</Link>
+              <Link to={"/register"}> {t("Login.HAVE_ACOUNT")}</Link>
             </p>
             <ErrorCMP errorData={emailErr} />
           </div>
@@ -142,7 +145,7 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setemail(e.target.value)}
                   className="  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
+                  placeholder={t("Login.EMAIL")}
                 />
                 <ErrorCMP errorData={errors.email} />
               </div>
@@ -157,7 +160,7 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setpassword(e.target.value)}
                   className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
+                  placeholder={t("Login.PASSWORD")}
                 />
                 <ErrorCMP errorData={errors.password} />
               </div>
@@ -169,10 +172,14 @@ const Login = () => {
                 disabled={loadingstate}
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <span className="text-indigo-500 absolute left-0 inset-y-0 flex items-center pl-3">
+                <span className="text-indigo-500 absolute start-0 inset-y-0 flex items-center ps-3">
                   <FontAwesomeIcon icon={faLock} />
                 </span>
-                {loadingstate ? <LoadingCMP siz={"h-6 w-6"} /> : "Sign in"}
+                {loadingstate ? (
+                  <LoadingCMP siz={"h-6 w-6"} />
+                ) : (
+                  t("Login.BUTTON")
+                )}
               </button>
             </div>
           </form>
@@ -181,7 +188,7 @@ const Login = () => {
             <span className="w-1/4 h-px inline-block bg-gray-500"></span>
             <span className="w-2/4 sm:text-base text-sm">
               {" "}
-              Or continue with{" "}
+              {t("Login.CONTINUE")}{" "}
             </span>
             <span className="w-1/4 h-px inline-block bg-gray-500"></span>
           </div>
@@ -207,17 +214,17 @@ const Login = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-evenly sm:py-6 text-sm sm:text-base">
             <div className="flex items-center">
-              Don't have an account?
+              {t("Login.HAVE_ACOUNT2")}
               <Link
                 className="font-medium text-indigo-600 hover:text-indigo-500"
                 to={"/register"}
               >
                 {" "}
-                Sign up
+                {t("Login.REGISTER")}
               </Link>
             </div>
             <div className="font-medium text-indigo-500">
-              <Link to={"/email"}>Forget password?</Link>
+              <Link to={"/email"}>{t("Login.FORGOT")}</Link>
             </div>
           </div>
         </div>
