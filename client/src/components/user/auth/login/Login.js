@@ -134,6 +134,9 @@ const Login = () => {
           </div>
 
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <span>for admin access login with</span>
+            <span>username:- admin@admin.com</span>
+            <span>password:- 1111</span>
             <div className="rounded-md shadow-sm ">
               <div className="mb-4">
                 <label htmlFor="email-address" className="sr-only">

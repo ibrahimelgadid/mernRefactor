@@ -58,7 +58,6 @@ router.route("/github/callback").get(
   passport.authenticate("github", {
     successRedirect: process.env.app_client,
     failureRedirect: process.env.app_client + "/register",
-
     failureMessage: true,
   })
 );
@@ -71,6 +70,7 @@ router.route("/facebook").get(
 
 router.route("/facebook/callback").get(
   passport.authenticate("facebook", {
+    successRedirect: process.env.app_client,
     failureRedirect: process.env.app_client + "/register",
     failureMessage: true,
   })
