@@ -1,6 +1,6 @@
 {
   "Registration": {
-    "REGISTER": "ٌRegister",
+    "REGISTER": "Sign up",
     "LOGIN": "Login",
     "TITLE": "Create new account",
     "HAVE_ACOUNT": "Have an account? Sign in",
@@ -14,13 +14,13 @@
   },
 
   "Login": {
-    "REGISTER": "ٌRegister",
+    "REGISTER": "Sign up",
     "LOGIN": "Login",
     "TITLE": "Login to your account",
     "HAVE_ACOUNT": "Don't have an account? Sign up",
     "EMAIL": "Email address",
     "PASSWORD": "Password",
-    "BUTTON": "Sign up",
+    "BUTTON": "Sign in",
     "HAVE_ACOUNT2": "Don't have an account?",
     "CONTINUE": "Or continue with",
     "FORGOT": "Forget password?"
