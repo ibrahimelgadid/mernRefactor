@@ -9,7 +9,7 @@ const passport = require("passport");
 passport.use(
   new GoogleStrategy(
     {
-      callbackURL: "/users/google/callback",
+      callbackURL: process.env.app_server + "/users/google/callback",
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     },
@@ -42,7 +42,7 @@ passport.use(
 passport.use(
   new GitHubStrategy(
     {
-      callbackURL: "/users/github/callback",
+      callbackURL: process.env.app_server + "/users/github/callback",
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       scope: ["user:email"],
@@ -76,7 +76,7 @@ passport.use(
 passport.use(
   new FaceBookStrategy(
     {
-      callbackURL: "/users/facebook/callback",
+      callbackURL: process.env.app_server + "/users/facebook/callback",
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
       profileFields: ["id", "displayName", "photos", "email"],

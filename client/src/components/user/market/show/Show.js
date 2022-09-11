@@ -14,6 +14,7 @@ import { addItem } from "../../../../redux/actions/cartActions";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Fancybox from "../gallary/fancybox/Fancybox";
+import { useTranslation } from "react-i18next";
 
 const Show = () => {
   const { productId } = useParams();
@@ -22,6 +23,7 @@ const Show = () => {
   const { product } = useSelector((state) => state.productsReducer);
 
   const addItemsHND = bindActionCreators(addItem, useDispatch());
+  const { t, i18n } = useTranslation();
 
   const submitAddItem = async () => {
     const itemData = {
@@ -62,14 +64,9 @@ const Show = () => {
               </h2>
 
               <section aria-labelledby="information-heading" className="mt-2">
-                <h3 id="information-heading" className="sr-only">
-                  Product information
-                </h3>
-
                 <p className="text-2xl text-gray-900">${product.price}</p>
 
                 <div className="mt-6">
-                  <h4 className="sr-only">Reviews</h4>
                   <div className="flex items-center">
                     <div className="flex items-center">
                       <FontAwesomeIcon
@@ -98,7 +95,7 @@ const Show = () => {
                       to="#"
                       className="ms-3 text-sm font-medium text-sky-600 hover:text-sky-500"
                     >
-                      117 reviews
+                      117 {t("Market.REVIEWS")}
                     </Link>
                   </div>
                 </div>
@@ -110,7 +107,7 @@ const Show = () => {
               >
                 <h4 className="text-2xl font-semibold  py-8">
                   {" "}
-                  <FontAwesomeIcon icon={faImage} /> Gallary:-
+                  <FontAwesomeIcon icon={faImage} /> {t("Market.GALLARY")}:-
                 </h4>
                 {product.productGallary ? (
                   <Fancybox>
