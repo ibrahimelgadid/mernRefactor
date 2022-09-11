@@ -27,7 +27,7 @@ exports.getProductsBySearch = asyncHandler(async (req, res) => {
   const page = req.query.page ? req.query.page : 1;
   const search = req.query.search;
 
-  const limit = 2;
+  const limit = 4;
   const skip = (page - 1) * limit;
   const queries = {
     name: {
@@ -54,7 +54,7 @@ exports.getProductsBySort = asyncHandler(async (req, res) => {
   const page = req.query.page ? req.query.page : 1;
   const { selectedItem, number } = req.body;
 
-  const limit = 2;
+  const limit = 4;
   const skip = (page - 1) * limit;
 
   const products = await productModel
@@ -81,7 +81,7 @@ exports.getProductsByFilters = asyncHandler(async (req, res) => {
     max = price[1];
   const page = req.query.page ? req.query.page : 1;
 
-  const limit = 2;
+  const limit = 4;
   const skip = (page - 1) * limit;
 
   const filterQuery = !isEmpty(filters)
@@ -112,7 +112,7 @@ exports.getProductsByFilters = asyncHandler(async (req, res) => {
 //---------------------------------------------|
 exports.getProductsForUsers = asyncHandler(async (req, res) => {
   const page = req.query.page ? req.query.page : 1;
-  const limit = 2;
+  const limit = 4;
   const skip = (page - 1) * limit;
 
   const products = await productModel

@@ -46,7 +46,7 @@ const Header = () => {
       <div className="mx-auto container ">
         <div className="relative flex items-center justify-between h-16">
           {isAuth ? (
-            <div className="absolute inset-y-0 start-0 flex items-center sm:hidden">
+            <div className="absolute inset-y-0 end-0 flex items-center sm:hidden">
               <button
                 onClick={() => setitemDropDown(!itemDropDown)}
                 className=" p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -58,7 +58,7 @@ const Header = () => {
           <div
             className={classnames(
               "flex-1 flex items-center  sm:items-stretch sm:justify-start",
-              { " justify-start": !isAuth, " justify-center": isAuth }
+              { "justify-start": !isAuth, " justify-center": isAuth }
             )}
           >
             <div className="flex items-center">
@@ -246,7 +246,7 @@ const Header = () => {
               className="bg-gray-900 relative text-white block px-3 py-2 rounded-md text-base font-medium"
               aria-current="page"
             >
-              Cart
+              {t("Header.CART")}
               <div className="inline-flex absolute top-0 start-9 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
                 {cart?.totalQty || 0}
               </div>
@@ -256,14 +256,14 @@ const Header = () => {
               to="/community"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Community
+              {t("Header.COMMUNITY")}
             </Link>
 
             <Link
               to="/orders"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Orders
+              {t("Header.ORDERS")}
             </Link>
           </div>
         ) : null}
