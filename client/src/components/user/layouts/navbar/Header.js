@@ -11,7 +11,6 @@ import {
   faUserGear,
   faUserNinja,
 } from "@fortawesome/free-solid-svg-icons";
-import classnames from "classnames";
 import { logOut } from "../../../../redux/actions/authActions";
 import { getItems } from "../../../../redux/actions/cartActions";
 import { useTranslation } from "react-i18next";
@@ -45,31 +44,17 @@ const Header = () => {
     <nav className="bg-gray-900">
       <div className="mx-auto container ">
         <div className="relative flex items-center justify-between h-16">
-          {isAuth ? (
-            <div className="absolute inset-y-0 end-0 flex items-center sm:hidden">
-              <button
-                onClick={() => setitemDropDown(!itemDropDown)}
-                className=" p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              >
-                <FontAwesomeIcon icon={faBars} size={"xl"} />
-              </button>
-            </div>
-          ) : null}
-          <div
-            className={classnames(
-              "flex-1 flex items-center  sm:items-stretch sm:justify-start",
-              { "justify-start": !isAuth, " justify-center": isAuth }
-            )}
-          >
-            <div className="flex items-center">
-              <Link to={"/"}>
-                <img
-                  className="block h-8 w-auto"
-                  src="../../../../../imgs/imm.png"
-                  alt="Workflow"
-                />
-              </Link>
-            </div>
+          {/* ////////////////////////  brand & lang section  /////// */}
+
+          <div className="flex">
+            <Link to={"/"}>
+              <img
+                className="block h-8 w-auto"
+                src="../../../../../imgs/imm.png"
+                alt=""
+              />
+            </Link>
+
             <div className="text-gray-100 font-medium border border-indigo-600 rounded-full flex justify-center items-center px-2 ">
               {i18n.language === "ar" && (
                 <button
@@ -95,55 +80,21 @@ const Header = () => {
                 </button>
               )}
             </div>
-            {isAuth ? (
-              <div className="hidden sm:block ms-6 sm">
-                <div className="flex space-x-4">
-                  <NavLink
-                    to="/cart"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex relative items-center"
-                    aria-current="page"
-                  >
-                    {t("Header.CART")}
-                    <div className="inline-flex absolute -top-2 start-9 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
-                      {cart?.totalQty || 0}
-                    </div>
-                  </NavLink>
-
-                  <NavLink
-                    to="/community"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {t("Header.COMMUNITY")}
-                  </NavLink>
-
-                  <NavLink
-                    to="/orders"
-                    className="text-gray-300 cursor-pointer hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {t("Header.ORDERS")}
-                  </NavLink>
-                </div>
-              </div>
-            ) : null}
           </div>
-          <div className="absolute inset-y-0 start-0 flex items-center ps-2 sm:static sm:inset-auto ms-6 sm:pe-0">
-            {!isAuth ? (
-              <div className="auth text-white flex">
-                <Link
-                  to="/register"
-                  className="cursor-pointer text-gray-300 duration-500 bg-indigo-700 hover:bg-indigo-800 hover:text-white block sm:px-3 px-2  py-1 sm:text-base text-sm rounded-full sm:font-medium "
+          {isAuth ? (
+            <>
+              {/* ////////////////////////  items bar section  /////// */}
+              <div className=" flex items-center sm:hidden order-2">
+                <button
+                  onClick={() => setitemDropDown(!itemDropDown)}
+                  className=" p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 >
-                  {t("Header.REGISTER")}
-                </Link>
-                <Link
-                  to="/login"
-                  className="cursor-pointer  text-gray-300 duration-500 bg-indigo-700 hover:bg-indigo-800 hover:text-white block sm:px-3 px-2  me-1 py-1 sm:text-base text-sm  rounded-full  sm:font-medium "
-                >
-                  {t("Header.LOGIN")}
-                </Link>
+                  <FontAwesomeIcon icon={faBars} size={"xl"} />
+                </button>
               </div>
-            ) : (
-              <>
+
+              {/* ////////////////////////  user section  /////// */}
+              <div className="flex order-1">
                 <button
                   type="button"
                   className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -232,41 +183,87 @@ const Header = () => {
                     </div>
                   ) : null}
                 </div>{" "}
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div className="sm:hidden" id="mobile-menu">
-        {itemDropDown ? (
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link
-              to="/cart"
-              className="bg-gray-900 relative text-white block px-3 py-2 rounded-md text-base font-medium"
-              aria-current="page"
-            >
-              {t("Header.CART")}
-              <div className="inline-flex absolute top-0 start-9 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
-                {cart?.totalQty || 0}
               </div>
-            </Link>
 
-            <Link
-              to="/community"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              {t("Header.COMMUNITY")}
-            </Link>
+              {/* /////////////// cart items withot dropdown ///// */}
+              <div className="hidden sm:block ms-6 ">
+                <div className="flex space-x-4">
+                  <NavLink
+                    to="/cart"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex relative items-center"
+                    aria-current="page"
+                  >
+                    {t("Header.CART")}
+                    <div className="inline-flex absolute -top-2 start-9 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
+                      {cart?.totalQty || 0}
+                    </div>
+                  </NavLink>
 
-            <Link
-              to="/orders"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              {t("Header.ORDERS")}
-            </Link>
-          </div>
-        ) : null}
+                  <NavLink
+                    to="/community"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {t("Header.COMMUNITY")}
+                  </NavLink>
+
+                  <NavLink
+                    to="/orders"
+                    className="text-gray-300 cursor-pointer hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {t("Header.ORDERS")}
+                  </NavLink>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="auth text-white flex">
+              <Link
+                to="/register"
+                className="cursor-pointer text-gray-300 duration-500 bg-indigo-700 hover:bg-indigo-800 hover:text-white block sm:px-3 px-2  py-1 sm:text-base text-sm rounded-full sm:font-medium "
+              >
+                {t("Header.REGISTER")}
+              </Link>
+              <Link
+                to="/login"
+                className="cursor-pointer  text-gray-300 duration-500 bg-indigo-700 hover:bg-indigo-800 hover:text-white block sm:px-3 px-2  me-1 py-1 sm:text-base text-sm  rounded-full  sm:font-medium "
+              >
+                {t("Header.LOGIN")}
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* items dropdown */}
+        <div className="sm:hidden" id="mobile-menu">
+          {itemDropDown ? (
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <Link
+                to="/cart"
+                className="bg-gray-900 relative text-white block px-3 py-2 rounded-md text-base font-medium"
+                aria-current="page"
+              >
+                {t("Header.CART")}
+                <div className="inline-flex absolute top-0 start-9 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-gray-800 ">
+                  {cart?.totalQty || 0}
+                </div>
+              </Link>
+
+              <Link
+                to="/community"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                {t("Header.COMMUNITY")}
+              </Link>
+
+              <Link
+                to="/orders"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                {t("Header.ORDERS")}
+              </Link>
+            </div>
+          ) : null}
+        </div>
       </div>
     </nav>
   );
