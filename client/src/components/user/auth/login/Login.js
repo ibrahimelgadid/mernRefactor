@@ -134,9 +134,9 @@ const Login = () => {
           </div>
 
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <span>for admin access login with</span>
-            <span>username:- admin@admin.com</span>
-            <span>password:- 1111</span>
+            <p>for admin access login with</p>
+            <p>username:- admin@admin.com</p>
+            <p>password:- 1111</p>
             <div className="rounded-md shadow-sm ">
               <div className="mb-4">
                 <label htmlFor="email-address" className="sr-only">
@@ -203,11 +203,11 @@ const Login = () => {
               className="cursor-pointer bg-white hover:text-red-600 hover:border-red-600 duration-500 text-gray-500 border border-1 border-gray-300 py-2 px-5 sm:px-9 md:px-11 rounded-md"
             />
 
-            <FontAwesomeIcon
+            {/* <FontAwesomeIcon
               onClick={handleSubmitFacebookOauth}
               icon={faFacebook}
               className="cursor-pointer bg-white hover:text-blue-600 hover:border-blue-600 duration-500 text-gray-500 border border-1 border-gray-300 py-2 px-5 sm:px-9 md:px-11 rounded-md"
-            />
+            /> */}
             <FontAwesomeIcon
               onClick={handleSubmitGithubOauth}
               icon={faGithub}
