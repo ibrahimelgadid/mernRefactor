@@ -18,14 +18,23 @@ const Product = ({ product }) => {
       price: product.price,
       name: product.name,
     };
-    if (await addItemsHND(itemData)) {
+    if (!localStorage.getItem("token")) {
       withReactContent(Swal).fire({
-        title: "Added",
-        icon: "success",
-        text: `${product.name} added to cart successfully,`,
+        title: "Fail",
+        icon: "error",
+        text: `Please sign in first`,
         timer: 3000,
       });
-      // socket.emit("allah");
+    } else {
+      if (await addItemsHND(itemData)) {
+        withReactContent(Swal).fire({
+          title: "Added",
+          icon: "success",
+          text: `${product.name} added to cart successfully,`,
+          timer: 3000,
+        });
+        // socket.emit("allah");
+      }
     }
   };
 
