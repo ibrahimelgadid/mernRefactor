@@ -39,15 +39,25 @@ const ProfileEdit = () => {
       phone,
     };
 
-    if (await editProfileForUi(userData)) {
+    if (user.email !== "admin@admin.com") {
+      if (await editProfileForUi(userData)) {
+        withReactContent(Swal).fire({
+          title: "Profile Edit",
+          icon: "success",
+          text: "You Profile edited successfully",
+          timer: 5000,
+        });
+        navigate(-1);
+      }
+    } else {
       withReactContent(Swal).fire({
-        title: "Profile Edit",
-        icon: "success",
-        text: "You Profile edited successfully",
+        title: "Fail",
+        icon: "error",
+        text: "This only user is not available to edit, to do this create new account",
         timer: 3000,
       });
-      navigate(-1);
     }
+
     setloadingstate(false);
   };
 
