@@ -14,7 +14,7 @@ import {
 export const addBrand = (brandData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let brand = await axios.post("/brands", brandData);
+    let brand = await axios.post("/api/brands", brandData);
     brand = await brand.data;
     dispatch({
       type: ADD_BRAND,
@@ -36,7 +36,7 @@ export const addBrand = (brandData) => async (dispatch) => {
 export const editBrand = (brandData, brandId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let brand = await axios.put("/brands/" + brandId, brandData);
+    let brand = await axios.put("/api/brands/" + brandId, brandData);
     brand = await brand.data;
     dispatch({
       type: EDIT_BRAND,
@@ -57,7 +57,7 @@ export const editBrand = (brandData, brandId) => async (dispatch) => {
 //---------------------------------------------|
 export const getBrands = () => async (dispatch) => {
   try {
-    let brands = await axios.get("/brands");
+    let brands = await axios.get("/api/brands");
     brands = await brands.data;
 
     dispatch({
@@ -77,7 +77,7 @@ export const getBrands = () => async (dispatch) => {
 //---------------------------------------------|
 export const deleteBrand = (brandId) => async (dispatch) => {
   try {
-    await axios.delete("/brands/" + brandId);
+    await axios.delete("/api/brands/" + brandId);
     dispatch({
       type: DELETE_BRAND,
       payload: brandId,

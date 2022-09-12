@@ -14,7 +14,7 @@ import {
 export const addCategory = (categoryData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let category = await axios.post("/categories", categoryData);
+    let category = await axios.post("/api/categories", categoryData);
     category = await category.data;
     dispatch({
       type: ADD_CATEGORY,
@@ -36,7 +36,10 @@ export const addCategory = (categoryData) => async (dispatch) => {
 export const editCategory = (categoryData, categoryId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let category = await axios.put("/categories/" + categoryId, categoryData);
+    let category = await axios.put(
+      "/api/categories/" + categoryId,
+      categoryData
+    );
     category = await category.data;
     dispatch({
       type: EDIT_CATEGORY,
@@ -57,7 +60,7 @@ export const editCategory = (categoryData, categoryId) => async (dispatch) => {
 //---------------------------------------------|
 export const getCategories = () => async (dispatch) => {
   try {
-    let categories = await axios.get("/categories");
+    let categories = await axios.get("/api/categories");
     categories = await categories.data;
 
     dispatch({
@@ -77,7 +80,7 @@ export const getCategories = () => async (dispatch) => {
 //---------------------------------------------|
 export const deleteCategory = (categoryId) => async (dispatch) => {
   try {
-    await axios.delete("/categories/" + categoryId);
+    await axios.delete("/api/categories/" + categoryId);
     dispatch({
       type: DELETE_CATEGORY,
       payload: categoryId,

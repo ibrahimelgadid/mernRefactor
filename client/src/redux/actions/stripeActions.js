@@ -6,7 +6,7 @@ import { CLIENT_SECRET, GET_ERRORS } from "./actionsTypes";
 //---------------------------------------------|
 export const getPaymentClientSecret = (amount) => async (dispatch) => {
   try {
-    let cilentSecret = await axios.post("/stripe/payment/create", amount);
+    let cilentSecret = await axios.post("/api/stripe/payment/create", amount);
     cilentSecret = await cilentSecret.data;
 
     dispatch({

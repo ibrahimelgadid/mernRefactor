@@ -14,7 +14,7 @@ export const addNotificationFromNotAuth =
   (notificationsData) => async (dispatch) => {
     try {
       let notification = await axios.post(
-        "/notifications/notAuth",
+        "/api/notifications/notAuth",
         notificationsData
       );
       notification = notification.data;
@@ -35,7 +35,10 @@ export const addNotificationFromNotAuth =
 export const addNotificationFromAuth =
   (notificationsData) => async (dispatch) => {
     try {
-      let notification = await axios.post("/notifications", notificationsData);
+      let notification = await axios.post(
+        "/api/notifications",
+        notificationsData
+      );
       notification = notification.data;
       dispatch({
         type: ADD_NOTIFY,
@@ -54,7 +57,7 @@ export const addNotificationFromAuth =
 //---------------------------------------------------------|
 export const getNotifications = () => async (dispatch) => {
   try {
-    let notifications = await axios.get("/notifications");
+    let notifications = await axios.get("/api/notifications");
     notifications = await notifications.data;
     dispatch({
       type: GET_NOTIFIES,
@@ -73,7 +76,7 @@ export const getNotifications = () => async (dispatch) => {
 //---------------------------------------------------------|
 export const deleteNotification = (notificationId) => async (dispatch) => {
   try {
-    await axios.delete(`/notifications/${notificationId}`);
+    await axios.delete(`/api/notifications/${notificationId}`);
     dispatch({
       type: DELETE_NOTIFIY,
       payload: notificationId,
@@ -91,7 +94,7 @@ export const deleteNotification = (notificationId) => async (dispatch) => {
 //---------------------------------------------------------|
 export const clearNotifications = () => async (dispatch) => {
   try {
-    await axios.post("/notifications/clear");
+    await axios.post("/api/notifications/clear");
     dispatch({
       type: DELETE_NOTIFIIES,
     });

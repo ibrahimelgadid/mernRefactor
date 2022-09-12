@@ -13,7 +13,7 @@ import {
 //---------------------------------------------------------|
 export const getOrders = () => async (dispatch) => {
   try {
-    let orders = await axios.get("/orders");
+    let orders = await axios.get("/api/orders");
     orders = await orders.data;
     dispatch({
       type: GET_ORDERS,
@@ -32,7 +32,7 @@ export const getOrders = () => async (dispatch) => {
 //---------------------------------------------------------|
 export const getOrdersForAdmins = () => async (dispatch) => {
   try {
-    let orders = await axios.get("/orders/admins");
+    let orders = await axios.get("/api/orders/admins");
     orders = await orders.data;
     dispatch({
       type: GET_ORDERS,
@@ -51,7 +51,7 @@ export const getOrdersForAdmins = () => async (dispatch) => {
 //---------------------------------------------------------|
 export const getOrder = (orderId) => async (dispatch) => {
   try {
-    let order = await axios.get(`/orders/${orderId}`);
+    let order = await axios.get(`/api/orders/${orderId}`);
     order = await order.data;
     dispatch({
       type: GET_ORDER,
@@ -71,7 +71,7 @@ export const getOrder = (orderId) => async (dispatch) => {
 export const validateOrder = (orderData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    await axios.post("/orders/validate", orderData);
+    await axios.post("/api/orders/validate", orderData);
     return true;
   } catch (err) {
     dispatch({
@@ -88,7 +88,7 @@ export const validateOrder = (orderData) => async (dispatch) => {
 export const addOrder = (orderData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    await axios.post("/orders", orderData);
+    await axios.post("/api/orders", orderData);
     return true;
   } catch (err) {
     dispatch({
@@ -105,7 +105,7 @@ export const addOrder = (orderData) => async (dispatch) => {
 export const editOrder = (orderData, orderId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let order = await axios.put(`/orders/${orderId}`, orderData);
+    let order = await axios.put(`/api/orders/${orderId}`, orderData);
     order = await order.data;
     dispatch({
       type: GET_ORDER,
@@ -126,7 +126,7 @@ export const editOrder = (orderData, orderId) => async (dispatch) => {
 //---------------------------------------------------------|
 export const deleteOrder = (orderId) => async (dispatch) => {
   try {
-    await axios.post("/orders/delete", { orderId });
+    await axios.post("/api/orders/delete", { orderId });
     dispatch({
       type: DELETE_ORDER,
       payload: orderId,

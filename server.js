@@ -47,18 +47,18 @@ app.use(passport.session());
 //---------------------------------------------|
 //             ADD ROUTES IN MIDDELWARES
 //---------------------------------------------|
-app.use("/users", userRoutes);
-app.use("/profile", profileRoutes);
-app.use("/posts", postRoutes);
-app.use("/comments", commentRoutes);
-app.use("/likes", likeRoutes);
-app.use("/brands", brandRoutes);
-app.use("/products", productRoutes);
-app.use("/categories", categoryRoutes);
-app.use("/cart", cartRoutes);
-app.use("/stripe", stripeRoutes);
-app.use("/notifications", notificationRoutes);
-app.use("/orders", orderRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/profile", profileRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/likes", likeRoutes);
+app.use("/api/brands", brandRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/stripe", stripeRoutes);
+app.use("/api/notifications", notificationRoutes);
+app.use("/api/orders", orderRoutes);
 
 // for production
 if (process.env.NODE_ENV === "production") {

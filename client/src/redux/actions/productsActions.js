@@ -15,7 +15,7 @@ import {
 export const addProduct = (productData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    await axios.post("/products", productData);
+    await axios.post("/api/products", productData);
     return true;
   } catch (err) {
     dispatch({
@@ -32,7 +32,7 @@ export const addProduct = (productData) => async (dispatch) => {
 export const editProduct = (productData, productId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    await axios.put("/products/" + productId, productData);
+    await axios.put("/api/products/" + productId, productData);
     return true;
   } catch (err) {
     dispatch({
@@ -48,7 +48,7 @@ export const editProduct = (productData, productId) => async (dispatch) => {
 //---------------------------------------------|
 export const getProducts = () => async (dispatch) => {
   try {
-    let products = await axios.get("/products");
+    let products = await axios.get("/api/products");
     products = await products.data;
 
     dispatch({
@@ -70,7 +70,7 @@ export const getProducts = () => async (dispatch) => {
 //---------------------------------------------|
 export const getProductsForUsers = (page) => async (dispatch) => {
   try {
-    let products = await axios.get(`/products/pro/forUsers?page=${page}`);
+    let products = await axios.get(`/api/products/pro/forUsers?page=${page}`);
     products = await products.data;
 
     dispatch({
@@ -90,7 +90,7 @@ export const getProductsForUsers = (page) => async (dispatch) => {
 //---------------------------------------------|
 export const sortProducts = (sortData) => async (dispatch) => {
   try {
-    let products = await axios.post(`/products/pro/sort?page=1`, sortData);
+    let products = await axios.post(`/api/products/pro/sort?page=1`, sortData);
     products = await products.data;
     dispatch({
       type: GET_PRODUCTS,
@@ -109,7 +109,7 @@ export const sortProducts = (sortData) => async (dispatch) => {
 //---------------------------------------------|
 export const getProductsByFilter = (filterData) => async (dispatch) => {
   try {
-    let products = await axios.post("/products/pro/filter", filterData);
+    let products = await axios.post("/api/products/pro/filter", filterData);
     products = await products.data;
 
     dispatch({
@@ -130,7 +130,7 @@ export const getProductsByFilter = (filterData) => async (dispatch) => {
 export const getProductsBySearch = (search, page) => async (dispatch) => {
   try {
     let products = await axios.post(
-      `/products/pro/search?search=${search}&page=${page}`
+      `/api/products/pro/search?search=${search}&page=${page}`
     );
     products = await products.data;
 
@@ -151,7 +151,7 @@ export const getProductsBySearch = (search, page) => async (dispatch) => {
 //---------------------------------------------|
 export const getProduct = (productId) => async (dispatch) => {
   try {
-    let product = await axios.get("/products/" + productId);
+    let product = await axios.get("/api/products/" + productId);
     product = product.data;
     dispatch({
       type: GET_PRODUCT,
@@ -170,7 +170,7 @@ export const getProduct = (productId) => async (dispatch) => {
 //---------------------------------------------|
 export const deleteProduct = (productId) => async (dispatch) => {
   try {
-    await axios.delete("/products/" + productId);
+    await axios.delete("/api/products/" + productId);
 
     dispatch({
       type: DELETE_PRODUCT,
@@ -193,7 +193,7 @@ export const addGallaryImages =
   (gallaryData, productId) => async (dispatch) => {
     try {
       let product = await axios.post(
-        `/products/gallary/${productId}`,
+        `/api/products/gallary/${productId}`,
         gallaryData
       );
       product = await product;
@@ -216,7 +216,9 @@ export const addGallaryImages =
 //---------------------------------------------|
 export const deleteGallaryImage = (productImgCloudId) => async (dispatch) => {
   try {
-    let product = await axios.delete(`/products/gallary/${productImgCloudId}`);
+    let product = await axios.delete(
+      `/api/products/gallary/${productImgCloudId}`
+    );
     product = await product.data;
     dispatch({
       type: GET_PRODUCT,

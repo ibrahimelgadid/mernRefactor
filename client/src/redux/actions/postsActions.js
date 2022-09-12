@@ -13,7 +13,7 @@ import { clearErrors } from "../reduxUtilis/clearErrors";
 //==================================================================
 export const getPosts = () => async (dispatch) => {
   try {
-    let posts = await axios.get("/posts");
+    let posts = await axios.get("/api/posts");
     posts = await posts.data;
     dispatch({
       type: GET_POSTS,
@@ -33,7 +33,7 @@ export const getPosts = () => async (dispatch) => {
 export const editPost = (postData, postId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let post = await axios.put(`/posts/${postId}`, postData);
+    let post = await axios.put(`/api/posts/${postId}`, postData);
     post = await post.data;
     dispatch({
       type: EDIT_POST,
@@ -55,7 +55,7 @@ export const editPost = (postData, postId) => async (dispatch) => {
 export const addPost = (postData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let posts = await axios.post("/posts", postData);
+    let posts = await axios.post("/api/posts", postData);
     posts = posts.data;
     dispatch({
       type: ADD_POSTS,
@@ -76,7 +76,7 @@ export const addPost = (postData) => async (dispatch) => {
 //==================================================================
 export const deletePost = (postId) => async (dispatch) => {
   try {
-    await axios.delete(`/posts/${postId}`);
+    await axios.delete(`/api/posts/${postId}`);
     dispatch({
       type: DELETE_POST,
       payload: postId,
@@ -97,7 +97,7 @@ export const deletePost = (postId) => async (dispatch) => {
 export const likePost = (postId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let postAfterLike = await axios.post(`/likes/${postId}`);
+    let postAfterLike = await axios.post(`/api/likes/${postId}`);
     postAfterLike = await postAfterLike.data;
     dispatch({
       type: EDIT_POST,
@@ -117,7 +117,7 @@ export const likePost = (postId) => async (dispatch) => {
 export const unLikePost = (postId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let postAfterUnLike = await axios.delete(`/likes/${postId}`);
+    let postAfterUnLike = await axios.delete(`/api/likes/${postId}`);
     postAfterUnLike = await postAfterUnLike.data;
     dispatch({
       type: EDIT_POST,
@@ -138,7 +138,7 @@ export const addComment = (commentData, postId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
     let postAfterAddComment = await axios.post(
-      `/comments/${postId}`,
+      `/api/comments/${postId}`,
       commentData
     );
     postAfterAddComment = postAfterAddComment.data;
@@ -163,7 +163,7 @@ export const deleteComment = (postIdAndCommentId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
     let postAfterDeleteComment = await axios.delete(
-      `/comments/${postIdAndCommentId}`
+      `/api/comments/${postIdAndCommentId}`
     );
     postAfterDeleteComment = await postAfterDeleteComment.data;
 

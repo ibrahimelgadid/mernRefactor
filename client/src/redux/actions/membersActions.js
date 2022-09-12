@@ -7,7 +7,7 @@ import { DELETE_USER, EDIT_USER, GET_ERRORS, GET_USERS } from "./actionsTypes";
 //========================================================|
 export const getUsers = () => async (dispatch) => {
   try {
-    let users = await axios.get("/users");
+    let users = await axios.get("/api/users");
     users = await users.data;
 
     dispatch({
@@ -49,7 +49,10 @@ export const getUsers = () => async (dispatch) => {
 export const editUserRole = (roleData, userId) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let userAfterEditRole = await axios.put("/users/role/" + userId, roleData);
+    let userAfterEditRole = await axios.put(
+      "/api/users/role/" + userId,
+      roleData
+    );
     userAfterEditRole = await userAfterEditRole.data;
     dispatch({
       type: EDIT_USER,
@@ -70,7 +73,7 @@ export const editUserRole = (roleData, userId) => async (dispatch) => {
 //========================================================|
 export const deleteUser = (userId) => async (dispatch) => {
   try {
-    await axios.delete("/users/" + userId);
+    await axios.delete("/api/users/" + userId);
     dispatch({
       type: DELETE_USER,
       payload: userId,

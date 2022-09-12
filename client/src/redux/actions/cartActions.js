@@ -13,7 +13,7 @@ import { clearErrors } from "../reduxUtilis/clearErrors";
 export const addItem = (itemData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let items = await axios.post("/cart", itemData);
+    let items = await axios.post("/api/cart", itemData);
     items = await items.data;
     dispatch({
       type: GET_CART,
@@ -34,7 +34,7 @@ export const addItem = (itemData) => async (dispatch) => {
 //---------------------------------------------------|
 export const increaseItemByOne = (itemData) => async (dispatch) => {
   try {
-    let item = await axios.post("/cart/increase", itemData);
+    let item = await axios.post("/api/cart/increase", itemData);
     item = await item.data;
     dispatch({
       type: PRODUCT_INC_DEC,
@@ -53,7 +53,7 @@ export const increaseItemByOne = (itemData) => async (dispatch) => {
 //---------------------------------------------------|
 export const decreaseItemByOne = (itemData) => async (dispatch) => {
   try {
-    let item = await axios.post("/cart/decrease", itemData);
+    let item = await axios.post("/api/cart/decrease", itemData);
     item = await item.data;
     dispatch({
       type: PRODUCT_INC_DEC,
@@ -72,7 +72,7 @@ export const decreaseItemByOne = (itemData) => async (dispatch) => {
 //---------------------------------------------------|
 export const changeCartValue = (itemData) => async (dispatch) => {
   try {
-    let item = await axios.post("/cart/value", itemData);
+    let item = await axios.post("/api/cart/value", itemData);
     item = await item.data;
     dispatch({
       type: PRODUCT_INC_DEC,
@@ -91,7 +91,7 @@ export const changeCartValue = (itemData) => async (dispatch) => {
 //---------------------------------------------------|
 export const getItems = () => async (dispatch) => {
   try {
-    let items = await axios.get("/cart");
+    let items = await axios.get("/api/cart");
     items = await items.data;
     dispatch({
       type: GET_CART,
@@ -110,7 +110,7 @@ export const getItems = () => async (dispatch) => {
 //---------------------------------------------------|
 export const deleteItem = (itemData) => async (dispatch) => {
   try {
-    let cart = await axios.post("/cart/delete", itemData);
+    let cart = await axios.post("/api/cart/delete", itemData);
     cart = await cart.data;
     dispatch({
       type: PRODUCT_DELETE,
@@ -130,7 +130,7 @@ export const deleteItem = (itemData) => async (dispatch) => {
 export const clearCart = () => (dispatch) => {
   dispatch(clearErrors());
   axios
-    .post("/cart/clear")
+    .post("/api/cart/clear")
     .then((res) => {
       dispatch({
         type: GET_CART,

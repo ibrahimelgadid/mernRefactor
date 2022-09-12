@@ -13,7 +13,7 @@ let cookie = new Cookie();
 export const register = (registerData, navigate) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    await axios.post("/users/register", registerData);
+    await axios.post("/api/users/register", registerData);
 
     navigate("/login");
     return true;
@@ -31,7 +31,7 @@ export const register = (registerData, navigate) => async (dispatch) => {
 //---------------------------------------------|
 export const login = (userData) => async (dispatch) => {
   try {
-    let loginData = await axios.post("/users/login", userData);
+    let loginData = await axios.post("/api/users/login", userData);
     loginData = await loginData.data;
     localStorage.setItem("token", loginData.token);
     dispatch(setCurrentUser(jwtDecode(loginData.token)));
@@ -52,7 +52,7 @@ export const login = (userData) => async (dispatch) => {
 //---------------------------------------------|
 export const OauthLogin = () => async (dispatch) => {
   try {
-    let loginData = await axios.get("/users/login/success");
+    let loginData = await axios.get("/api/users/login/success");
     loginData = await loginData.data;
     localStorage.setItem("token", loginData.token);
     dispatch(setCurrentUser(jwtDecode(loginData.token)));
@@ -89,7 +89,7 @@ export const logOut = () => (dispatch) => {
 export const editProfile = (editProfileData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let token = await axios.put("profile", editProfileData);
+    let token = await axios.put("/api/profile", editProfileData);
     token = await token.data.token;
     localStorage.setItem("token", token);
     addTokenToHeader(token);
@@ -113,7 +113,7 @@ export const editProfile = (editProfileData) => async (dispatch) => {
 export const changeImg = (imgData) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    let token = await axios.put("profile/image", imgData);
+    let token = await axios.put("/apiprofile/image", imgData);
     token = await token.data.token;
     localStorage.setItem("token", token);
     addTokenToHeader(token);
@@ -137,7 +137,7 @@ export const changeImg = (imgData) => async (dispatch) => {
 export const sendMailToResetPass = (data) => async (dispatch) => {
   dispatch(clearErrors());
   try {
-    await axios.post("/users/reset-password-email", data);
+    await axios.post("/api/users/reset-password-email", data);
     return true;
   } catch (err) {
     dispatch({
@@ -153,7 +153,10 @@ export const sendMailToResetPass = (data) => async (dispatch) => {
 //---------------------------------------------|
 export const resetPass = (data, token, email) => async (dispatch) => {
   try {
-    let user = await axios.post(`/users/reset-pass/${token}/${email}`, data);
+    let user = await axios.post(
+      `/api/users/reset-pass/${token}/${email}`,
+      data
+    );
     console.log(user.data);
 
     return true;
