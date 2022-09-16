@@ -45,7 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //---------------------------------------------|
-//             ADD ROUTES IN MIDDELWARES
+//             ADD ROUTES IN MIDDELWARES|
 //---------------------------------------------|
 app.use("/api/users", userRoutes);
 app.use("/api/profile", profileRoutes);
