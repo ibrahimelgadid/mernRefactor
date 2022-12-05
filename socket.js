@@ -16,5 +16,5 @@ exports.connectToSocket = function (server) {
       socket.broadcast.emit("new notifications");
     });
   });
-  /////////////////////////////////////////
+  ////////////////////////////////////////
 };
