@@ -4,6 +4,7 @@
   "main": "server.js",
   "private": true,
   "scripts": {
+    "build": "npm install && cd client && npm install && npm run build",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm run --prefix client start"
