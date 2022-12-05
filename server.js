@@ -72,5 +72,5 @@ const server = app.listen(port, () => {
   console.log(`App running on ${port}`.blue);
 });
 
-// connect to socket..
+// connect to socket....
 require("./socket").connectToSocket(server);
